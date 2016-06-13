@@ -18,6 +18,7 @@ namespace OTAutomation
         public ImportExcelFile()
         {
             OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
+
             OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
         }
 
