@@ -22,7 +22,7 @@ namespace OTAutomation
         Hashtable EmployeeCollection = null;
         DateTime period;
         decimal WeeklyWorkingHours = 0;
-        log4net.ILog log = log4net.LogManager.GetLogger(typeof(ProcesssOT));
+        //log4net.ILog log = log4net.LogManager.GetLogger(typeof(ProcesssOT));
         #endregion
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace OTAutomation
         /// <param name="e">e as EventArgs</param>
         private void ProcesssOT_Load(object sender, EventArgs e)
         {
-            log.Info("Exception occured.");
+            //log.Info("Exception occured.");
             BindMonthNames();
             BindYearNames();
         }
