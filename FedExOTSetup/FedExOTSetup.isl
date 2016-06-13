@@ -3961,7 +3961,7 @@
 UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 			</td></row>
 		<row><td>DefaultProductConfiguration</td><td>Express</td></row>
-		<row><td>EnableSwidtag</td><td>1</td></row>
+		<row><td>EnableSwidtag</td><td>0</td></row>
 		<row><td>ISCompilerOption_CompileBeforeBuild</td><td>1</td></row>
 		<row><td>ISCompilerOption_Debug</td><td>0</td></row>
 		<row><td>ISCompilerOption_IncludePath</td><td/></row>
@@ -3975,7 +3975,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{48304E97-3245-464A-ABB5-6E9E59F68127}</td></row>
 		<row><td>ISUSSignature</td><td>{235652BC-1B75-45EA-9665-A139F064B29F}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore,viewProject</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
