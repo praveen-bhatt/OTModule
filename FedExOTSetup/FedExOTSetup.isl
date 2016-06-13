@@ -1885,6 +1885,7 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
+		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Project Repositories\Fedex Overtime Module\Code\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -1900,6 +1901,7 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>_Built</td><td/></row>
 	</table>
 
 	<table name="ISBillBoard">
@@ -3838,6 +3840,8 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>_Built1_9D09E189B6B14DC8B83953320CAB2916.exe</td><td/><td>&lt;VSSolutionFolder&gt;\OTAutomation\Resources\PerfCenterCpl.ico</td><td>0</td></row>
+		<row><td>_Built_45F7CCF1F9C646E2840AFBA2F89BA2CE.exe</td><td/><td>&lt;VSSolutionFolder&gt;\OTAutomation\Resources\PerfCenterCpl.ico</td><td>0</td></row>
 		<row><td>_Built_832B0952846A40EFAC2CC055AE8764F7.exe</td><td/><td>&lt;SystemFolder&gt;\Shell32.dll</td><td>305</td></row>
 	</table>
 
@@ -4514,8 +4518,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>_Built</td><td>fedexo_1_fedexotsetup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>OTAutomation.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td>1</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>OTAutomation.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td/><td/><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built</td><td>fedexo_1_fedexotsetup</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>OTAutomation.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built_45F7CCF1F9C646E2840AFBA2F89BA2CE.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>_Built1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME1##</td><td>OTAutomation.Primary_output</td><td>AlwaysInstall</td><td/><td/><td/><td>_Built1_9D09E189B6B14DC8B83953320CAB2916.exe</td><td>0</td><td>1</td><td/><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">
