@@ -10,11 +10,6 @@ Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "FedExOTSetup", "FedExOTSetu
 		{91333C6F-7AF5-4C1F-95CE-44F7DEC2B4D5} = {91333C6F-7AF5-4C1F-95CE-44F7DEC2B4D5}
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A6688D7B-8FB6-4B78-A546-AC42FAC65FA2}"
-	ProjectSection(SolutionItems) = preProject
-		Icon1.ico = Icon1.ico
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
