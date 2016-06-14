@@ -22,6 +22,7 @@ namespace OTAutomation
         /// <param name="employees">employees a collection of employee.</param>
         public static void DisplayInExcel(List<Employee> employees, DateTime period)
         {
+            
             Excel.Application excelApp = null;
             Excel._Worksheet workSheet = null;
             //Excel.Workbook workbook = null;
@@ -39,7 +40,7 @@ namespace OTAutomation
                 excelApp.Workbooks.Add();
 
                 // This example uses a single workSheet. 
-                workSheet = excelApp.ActiveSheet;
+                workSheet = (Excel._Worksheet)excelApp.ActiveSheet;
 
                 // Establish column headings in cells A1 and B1.
                 workSheet.Cells[1, "A"] = "EmCode";

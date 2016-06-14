@@ -5,7 +5,7 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.IO;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Configuration;
 
 namespace OTAutomation
@@ -33,7 +33,8 @@ namespace OTAutomation
             //string destinationPath = "D:\\ExportNew\\Input Excel Report.xlsx";//Server.MapPath("~//Export//" + filePath);
             if (extension.Equals(".xlsx"))
             {
-                conString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + destinationPath + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+                //conString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + destinationPath + ";Extended Properties=\"Excel 12.0;HDR=Yes;IMEX=2\"";
+                conString = string.Format(ConfigurationManager.AppSettings["ConStr"].ToString().Trim(), destinationPath);
             }
             else
             {

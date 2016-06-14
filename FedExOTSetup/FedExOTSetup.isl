@@ -225,7 +225,7 @@
 	<table name="AppSearch">
 		<col key="yes" def="s72">Property</col>
 		<col key="yes" def="s72">Signature_</col>
-		<row><td>DOTNETVERSION45FULL</td><td>DotNet45Full</td></row>
+		<row><td>DOTNETVERSION35SP1</td><td>DotNet35SP1</td></row>
 	</table>
 
 	<table name="BBControl">
@@ -343,6 +343,7 @@
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{EECE3379-C950-4663-8E30-1B1894812426}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Primary_output</td><td>{BD02D857-64AA-4923-AFF7-99D8AE479E54}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Primary_output1</td><td>{A1EE0707-5847-4FE4-859A-194D6F42848B}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1054,6 +1055,7 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output</td></row>
+		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output1</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1870,6 +1872,7 @@
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output</td></row>
+		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output1</td></row>
 	</table>
 
 	<table name="File">
@@ -1884,7 +1887,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
-		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
+		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output1</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
 		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Project Repositories\Fedex Overtime Module\Code\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
 	</table>
 
@@ -2030,6 +2033,7 @@
 		<col def="S0">Miscellaneous</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_7E78527B_08F6_473D_9701_B61146C9C6F7_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Primary_output</td><td/><td/><td>_AF9D6DF4_A5CE_426D_8008_1D8F6665A437_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_ACC4C646_1609_4ABE_A85C_8909B04702D3_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2585,7 +2589,6 @@
 		<col def="I2">Order</col>
 		<col def="I2">ISSetupLocation</col>
 		<col def="S255">ISReleaseFlags</col>
-		<row><td>_279FE45B_0AF5_4713_897A_257F259A71B3_</td><td>Microsoft .NET Framework 4.5.2 Full.prq</td><td/><td/><td/></row>
 	</table>
 
 	<table name="ISSetupType">
@@ -2619,11 +2622,12 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1797534673</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1797560688</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1797558640</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1931772460</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35SP1</td><td>1033</td><td>Microsoft .NET Framework 3.5 SP1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1931784748</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_MSOFFICE2010</td><td>1033</td><td>Microsoft Office 2010 or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>1931749964</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_OS</td><td>1033</td><td>The operating system is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
@@ -3723,8 +3727,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1797536016</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>1797534673</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1797534673</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>1931780395</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1797534128</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1797533968</td></row>
 	</table>
@@ -3975,7 +3979,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{48304E97-3245-464A-ABB5-6E9E59F68127}</td></row>
 		<row><td>ISUSSignature</td><td>{235652BC-1B75-45EA-9665-A139F064B29F}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore,viewProject</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore,viewProject,viewRelease,viewTextMessages</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>
@@ -4033,7 +4037,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 	<table name="LaunchCondition">
 		<col key="yes" def="s255">Condition</col>
 		<col def="l255">Description</col>
-		<row><td>DOTNETVERSION45FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL##</td></row>
+		<row><td>DOTNETVERSION35SP1&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35SP1##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -4366,7 +4370,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
 		<row><td>SHOWLAUNCHPROGRAM</td><td>-1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION35SP1</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{FD8B2C23-37A9-4F39-AD21-694167A4A677}</td><td/></row>
@@ -4411,7 +4415,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s255">Key</col>
 		<col def="S255">Name</col>
 		<col def="I2">Type</col>
-		<row><td>DotNet45Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Version</td><td>2</td></row>
+		<row><td>DotNet35SP1</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v3.5</td><td>SP</td><td>2</td></row>
 	</table>
 
 	<table name="Registry">
