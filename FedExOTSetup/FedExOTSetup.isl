@@ -1888,7 +1888,7 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output1</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
-		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td/><td>1</td><td>D:\Project Repositories\Fedex Overtime Module\Code\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
+		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Source\Repos\OTModule\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">

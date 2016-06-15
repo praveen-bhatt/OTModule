@@ -17,12 +17,11 @@ namespace OTAutomation
     public partial class ProcesssOT : Form
     {
         #region Private Fields
-        Hashtable fileNames = null; //new List<string>();
+        Hashtable fileNames = null; 
         List<Employee> employees = null;
         Hashtable EmployeeCollection = null;
         DateTime period;
-        decimal WeeklyWorkingHours = 0;
-        //log4net.ILog log = log4net.LogManager.GetLogger(typeof(ProcesssOT));
+        double WeeklyWorkingHours = 0;
         #endregion
 
         /// <summary>
@@ -31,7 +30,7 @@ namespace OTAutomation
         public ProcesssOT()
         {
             InitializeComponent();
-            WeeklyWorkingHours = Convert.ToDecimal(ConfigurationManager.AppSettings["WeeklyWorkingHours"]);
+            WeeklyWorkingHours = Convert.ToDouble(ConfigurationManager.AppSettings["WeeklyWorkingHours"]);
             EmployeeCollection = new Hashtable();
             employees = new List<Employee>();
         }
@@ -56,6 +55,7 @@ namespace OTAutomation
         private void btnImport_Click(object sender, EventArgs e)
         {
             pnlFileUploader.Controls.Clear();
+            pnlWeekNumber.Controls.Clear();
             lblFileList.Text = string.Empty;
 
             if (fileNames != null) { fileNames = null; }
@@ -71,7 +71,9 @@ namespace OTAutomation
             int firstDayOfMonth = (int)firstOfMonth.DayOfWeek;
             int weeksInMonth = (int)Math.Ceiling((firstDayOfMonth + daysInMonth) / 7.0);
             int _PreviousButtonWidth = 0;
-
+            int firstDay = 0;
+            int lastDay = 0;
+            int weekNumber = 0;
             fileNames = new Hashtable();
 
             for (int i = 0; i < weeksInMonth; i++)
@@ -84,13 +86,23 @@ namespace OTAutomation
                 btnWeek.Left = _PreviousButtonWidth + 20;
 
                 btnWeek.Click += btn_Click;
+                weekNumber = i + 1;
+                GetWeekFirstAndLast(firstOfMonth, weekNumber, out firstDay, out lastDay);
+
+                Label lblWeek = new Label();
+                lblWeek.Name = "lblWeek" + (i + 1);
+                lblWeek.Text = firstDay.ToString() + "-" + lastDay.ToString();
+                lblWeek.Left = _PreviousButtonWidth + 30;
                 pnlFileUploader.Controls.Add(btnWeek);
+                pnlWeekNumber.Controls.Add(lblWeek);
                 fileNames.Add(i, null);
 
                 if (pnlFileUploader.Controls.Count > 0)
                 {
                     _PreviousButtonWidth = pnlFileUploader.Controls[i].Left + pnlFileUploader.Controls[i].Width;
                 }
+
+
             }
         }
 
@@ -134,7 +146,6 @@ namespace OTAutomation
                 }
                 catch (Exception)
                 {
-
                     throw;
                 }
             }
@@ -152,7 +163,6 @@ namespace OTAutomation
         {
             try
             {
-
                 if (fileNames.ContainsValue(null))
                 {
                     MessageBox.Show("Please choose all the files corresponding to each week!");
@@ -164,6 +174,7 @@ namespace OTAutomation
                     {
                         foreach (Employee emp in employeeCollection)
                         {
+                            ExporExcelFile.SetEmployeeOTHours(emp, WeeklyWorkingHours, 0);
                             employees.Add(emp);
                         }
                     }
@@ -219,6 +230,24 @@ namespace OTAutomation
             }
 
             cbYear.DataSource = years;
+        }
+
+        private void GetWeekFirstAndLast(DateTime date, int  weekNumber, out int firstDay, out int lastDay)
+        {
+            var thursdayInCorrectWeek = date.AddDays((weekNumber - 1) * 7);
+
+            var firstDate = thursdayInCorrectWeek;
+            var lastDate = thursdayInCorrectWeek.AddDays(7);
+
+            if (firstDate.Month < date.Year)
+                firstDay = 1;
+            else
+                firstDay = firstDate.Day;
+
+            if (lastDate.Month > date.Month)
+                lastDay = DateTime.DaysInMonth(date.Year, date.Month);
+            else
+                lastDay = lastDate.Day;
         }
     }
 }

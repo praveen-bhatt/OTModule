@@ -36,11 +36,12 @@
             this.btnImport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlHeader = new System.Windows.Forms.Panel();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnExport = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblFileList = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pnlWeekNumber = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlHeader.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -86,7 +87,7 @@
             // 
             this.pnlFileUploader.Location = new System.Drawing.Point(13, 142);
             this.pnlFileUploader.Name = "pnlFileUploader";
-            this.pnlFileUploader.Size = new System.Drawing.Size(602, 50);
+            this.pnlFileUploader.Size = new System.Drawing.Size(602, 29);
             this.pnlFileUploader.TabIndex = 4;
             // 
             // btnImport
@@ -121,6 +122,15 @@
             this.pnlHeader.Name = "pnlHeader";
             this.pnlHeader.Size = new System.Drawing.Size(600, 57);
             this.pnlHeader.TabIndex = 7;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Location = new System.Drawing.Point(1, -1);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(602, 127);
+            this.groupBox2.TabIndex = 11;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Import";
             // 
             // btnExport
             // 
@@ -163,20 +173,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export";
             // 
-            // groupBox2
+            // pnlWeekNumber
             // 
-            this.groupBox2.Location = new System.Drawing.Point(1, -1);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(602, 127);
-            this.groupBox2.TabIndex = 11;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Import";
+            this.pnlWeekNumber.Location = new System.Drawing.Point(13, 171);
+            this.pnlWeekNumber.Name = "pnlWeekNumber";
+            this.pnlWeekNumber.Size = new System.Drawing.Size(602, 29);
+            this.pnlWeekNumber.TabIndex = 5;
             // 
             // ProcesssOT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 345);
+            this.Controls.Add(this.pnlWeekNumber);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pictureBox1);
@@ -208,6 +217,7 @@
         private System.Windows.Forms.Label lblFileList;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Panel pnlWeekNumber;
 
     }
 }

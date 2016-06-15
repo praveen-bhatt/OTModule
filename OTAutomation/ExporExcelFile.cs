@@ -1,6 +1,7 @@
 ﻿using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.OleDb;
 using System.Globalization;
@@ -64,6 +65,9 @@ namespace OTAutomation
                     row++;
                     workSheet.Cells[row, "A"] = employee.Id;
                     workSheet.Cells[row, "B"] = period;
+                    workSheet.Cells[row, "C"] = employee.Ot1;
+                    workSheet.Cells[row, "D"] = employee.Ot2;
+                    workSheet.Cells[row, "E"] = employee.Ot3;
                 }
 
                 var xlYourRange = workSheet.get_Range("B2").EntireColumn;
@@ -83,6 +87,31 @@ namespace OTAutomation
                 excelApp = null;
                 workSheet = null;
                 //workbook = null;
+            }
+        }
+
+        public static void SetEmployeeOTHours(Employee employee, double weeklyWorkingHours, double totalLeaves)
+        {
+            double OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
+            double OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
+            double leftOverTimeHours = 0;
+            employee.TotalOverTimeHours = employee.TotalHours - weeklyWorkingHours;
+
+            if (employee.TotalOverTimeHours > 0)
+            {
+                employee.Ot2 = (employee.TotalOverTimeHours > OT10Hrs) ? OT10Hrs : employee.TotalOverTimeHours;
+                leftOverTimeHours = employee.TotalOverTimeHours - employee.Ot2;
+
+                if (leftOverTimeHours > 0)
+                {
+                    employee.Ot3 = (employee.TotalOverTimeHours - OT10Hrs > OT12Hrs) ? OT12Hrs : employee.TotalOverTimeHours - OT10Hrs;
+                    leftOverTimeHours = employee.Ot3;
+                }
+
+                if (leftOverTimeHours > 0)
+                {
+                    employee.Ot1 = (employee.TotalOverTimeHours - OT10Hrs - OT12Hrs > 0) ? employee.TotalOverTimeHours - OT10Hrs - OT12Hrs : 0;
+                }
             }
         }
 
