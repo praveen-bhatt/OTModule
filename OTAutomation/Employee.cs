@@ -18,6 +18,41 @@ namespace OTAutomation
         public string Period { get; set; }
 
         /// <summary>
+        /// Define hour of first day of week. 
+        /// </summary>
+        public double WeekFirstDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of second day of week. 
+        /// </summary>
+        public double WeekSecondDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of third day of week. 
+        /// </summary>
+        public double WeekThirdDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of fourth day of week. 
+        /// </summary>
+        public double WeekFourthDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of fifth day of week. 
+        /// </summary>
+        public double WeekFifthDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of sixth day of week. 
+        /// </summary>
+        public double WeekSixthDayHours { get; set; }
+
+        /// <summary>
+        /// Define hour of seventh day of week. 
+        /// </summary>
+        public double WeekSeventhDayHours { get; set; }
+
+        /// <summary>
         /// Define total working hours of employee in month. 
         /// </summary>
         public double TotalHours { get; set; }
@@ -81,5 +116,15 @@ namespace OTAutomation
         /// Define Ot6
         /// </summary>
         public double Ot6 { get; set; }
+    }
+
+    /// <summary>
+    /// Represents properties to define the date range.
+    /// </summary>
+    public class ReportDateRange
+    {
+        public int WeekStartDate { get; set; }
+
+        public int WeekEndDate { get; set; }
     }
 }

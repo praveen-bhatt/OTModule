@@ -36,7 +36,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(673, 327);
+            this.btnOk.Location = new System.Drawing.Point(849, 12);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 0;
@@ -47,7 +47,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(773, 327);
+            this.btnCancel.Location = new System.Drawing.Point(949, 12);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 1;
@@ -58,9 +58,9 @@
             // grdOvertimeData
             // 
             this.grdOvertimeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdOvertimeData.Location = new System.Drawing.Point(30, 12);
+            this.grdOvertimeData.Location = new System.Drawing.Point(12, 41);
             this.grdOvertimeData.Name = "grdOvertimeData";
-            this.grdOvertimeData.Size = new System.Drawing.Size(795, 288);
+            this.grdOvertimeData.Size = new System.Drawing.Size(1012, 495);
             this.grdOvertimeData.TabIndex = 2;
             // 
             // frmModel
@@ -69,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(860, 362);
+            this.ClientSize = new System.Drawing.Size(1036, 548);
             this.Controls.Add(this.grdOvertimeData);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);

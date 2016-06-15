@@ -26,7 +26,7 @@ namespace OTAutomation
             
             Excel.Application excelApp = null;
             Excel._Worksheet workSheet = null;
-            //Excel.Workbook workbook = null;
+            Excel.Workbook workbook = null;
 
             try
             {
@@ -68,6 +68,7 @@ namespace OTAutomation
                     workSheet.Cells[row, "C"] = employee.Ot1;
                     workSheet.Cells[row, "D"] = employee.Ot2;
                     workSheet.Cells[row, "E"] = employee.Ot3;
+                    workSheet.Cells[row, "F"] = employee.TotalHours;
                 }
 
                 var xlYourRange = workSheet.get_Range("B2").EntireColumn;
@@ -90,8 +91,9 @@ namespace OTAutomation
             }
         }
 
-        public static void SetEmployeeOTHours(Employee employee, double weeklyWorkingHours, double totalLeaves)
+        public static Employee SetEmployeeOTHours(Employee employee, double weeklyWorkingHours, double totalLeaves)
         {
+            Employee emp = new Employee();
             double OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
             double OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
             double leftOverTimeHours = 0;
@@ -113,6 +115,8 @@ namespace OTAutomation
                     employee.Ot1 = (employee.TotalOverTimeHours - OT10Hrs - OT12Hrs > 0) ? employee.TotalOverTimeHours - OT10Hrs - OT12Hrs : 0;
                 }
             }
+
+            return employee;
         }
 
     }

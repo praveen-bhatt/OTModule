@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using System.Configuration;
 using System.Collections;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Diagnostics;
 
 namespace OTAutomation
 {
@@ -17,11 +19,12 @@ namespace OTAutomation
     public partial class ProcesssOT : Form
     {
         #region Private Fields
-        Hashtable fileNames = null; 
+        Hashtable fileNames = null;
         List<Employee> employees = null;
         Hashtable EmployeeCollection = null;
         DateTime period;
         double WeeklyWorkingHours = 0;
+        Dictionary<int, ReportDateRange> weekDateRange = null;
         #endregion
 
         /// <summary>
@@ -32,7 +35,7 @@ namespace OTAutomation
             InitializeComponent();
             WeeklyWorkingHours = Convert.ToDouble(ConfigurationManager.AppSettings["WeeklyWorkingHours"]);
             EmployeeCollection = new Hashtable();
-            employees = new List<Employee>();
+
         }
 
         /// <summary>
@@ -75,6 +78,7 @@ namespace OTAutomation
             int lastDay = 0;
             int weekNumber = 0;
             fileNames = new Hashtable();
+            weekDateRange = new Dictionary<int, ReportDateRange>();
 
             for (int i = 0; i < weeksInMonth; i++)
             {
@@ -89,10 +93,17 @@ namespace OTAutomation
                 weekNumber = i + 1;
                 GetWeekFirstAndLast(firstOfMonth, weekNumber, out firstDay, out lastDay);
 
+                //Add week date range like 1 - 7 etc.
+                ReportDateRange dateRange = new ReportDateRange();
+                dateRange.WeekStartDate = firstDay;
+                dateRange.WeekEndDate = lastDay;
+                weekDateRange.Add(i, dateRange);
+
                 Label lblWeek = new Label();
                 lblWeek.Name = "lblWeek" + (i + 1);
-                lblWeek.Text = firstDay.ToString() + "-" + lastDay.ToString();
-                lblWeek.Left = _PreviousButtonWidth + 35;
+                lblWeek.Text = "Days: " + firstDay.ToString() + "-" + lastDay.ToString();
+                lblWeek.Width = 72;
+                lblWeek.Left = _PreviousButtonWidth + 28;
                 pnlFileUploader.Controls.Add(btnWeek);
                 pnlWeekNumber.Controls.Add(lblWeek);
                 fileNames.Add(i, null);
@@ -101,8 +112,6 @@ namespace OTAutomation
                 {
                     _PreviousButtonWidth = pnlFileUploader.Controls[i].Left + pnlFileUploader.Controls[i].Width;
                 }
-
-
             }
         }
 
@@ -126,12 +135,25 @@ namespace OTAutomation
                 try
                 {
                     DataTable dtTemp = ImportExcelFile.GetExcelData(openFileDialog.FileName);
+                    bool correctDateFormat = Convert.ToBoolean(ConfigurationManager.AppSettings["CorrectDateFormat"]);
+                    bool readFromExcel = Convert.ToBoolean(ConfigurationManager.AppSettings["ReadFromExcel"]);
+                    //Correct the date data of excel file.
+                    if (correctDateFormat)
+                    {
+                        dtTemp = DateCorrection(openFileDialog.FileName, dtTemp);
+                    }
+
+                    if (readFromExcel)
+                    {
+                        dtTemp = ReadFromExcel(openFileDialog.FileName, dtTemp);
+                    }
 
                     frmModel _model = new frmModel();
                     _model.ModelData = dtTemp;
+
                     if (_model.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        List<Employee> _EmpExcelFile =  ImportExcelFile.ProcessExcelData(_model.ModelData);
+                        ExcelData _EmpExcelFile = ImportExcelFile.ProcessExcelData(_model.ModelData);
 
                         if (EmployeeCollection.ContainsKey(((Button)sender).Tag))
                         {
@@ -154,6 +176,119 @@ namespace OTAutomation
             { lblFileList.Text += "Week-" + (i + 1).ToString() + ":    " + fileNames[i] + Environment.NewLine; }
         }
 
+        private static DataTable DateCorrection(string _filename, DataTable _table)
+        {
+
+            DataTable dt = _table.Clone();
+
+            foreach (DataColumn item in dt.Columns)
+            {
+                item.DataType = typeof(string);
+            }
+
+
+            for (int rows = 0; rows < _table.Rows.Count - 1; rows++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int cols = 0; cols < _table.Columns.Count - 1; cols++)
+                {
+
+                    dr[cols] = _table.Rows[rows][cols];
+
+                }
+                dt.Rows.Add(dr);
+            }
+
+
+            Excel.Application excelApp = null;
+            Excel.Workbook wb = null;
+            Excel._Worksheet _sheet = null;
+            try
+            {
+                excelApp = new Excel.Application();
+                wb = excelApp.Workbooks.Open(_filename);
+                _sheet = (Excel._Worksheet)wb.ActiveSheet;
+
+                //string data = string.Empty;
+                int row = Convert.ToInt32(ConfigurationManager.AppSettings["ExcelDateRow"].ToString().Trim());
+                int rowSetting = Convert.ToInt32(ConfigurationManager.AppSettings["ExcelDateRowAdjustment"].ToString().Trim());
+
+                for (int col = 1; col <= 22; col++)
+                {
+                    //Debug.Assert(!(row == 4 && col == 7), "checked!!");
+                    var cellValue = Convert.ToString((_sheet.Cells[row, col] as Excel.Range).Value);
+                    dt.Rows[row - rowSetting][col - 1] = cellValue;
+
+                    //if (cellValue.Trim().Length > 0) { data += "   " + cellValue; }
+                }
+
+                //MessageBox.Show(data);
+                wb.Close();
+                excelApp.Quit();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            finally { excelApp = null; wb = null; _sheet = null; GC.Collect(); }
+
+            return dt;
+        }
+
+        private static DataTable ReadFromExcel(string _filename, DataTable _table)
+        {
+
+            DataTable dt = _table.Clone();
+
+            foreach (DataColumn item in dt.Columns)
+            {
+                item.DataType = typeof(string);
+            }
+
+
+            for (int rows = 0; rows < _table.Rows.Count - 1; rows++)
+            {
+                DataRow dr = dt.NewRow();
+                for (int cols = 0; cols < _table.Columns.Count - 1; cols++)
+                {
+
+                    dr[cols] = _table.Rows[rows][cols];
+
+                }
+                dt.Rows.Add(dr);
+            }
+
+
+            Excel.Application excelApp = null;
+            Excel.Workbook wb = null;
+            Excel._Worksheet _sheet = null;
+            try
+            {
+                excelApp = new Excel.Application();
+                wb = excelApp.Workbooks.Open(_filename);
+                _sheet = (Excel._Worksheet)wb.ActiveSheet;
+
+                int rowSetting = Convert.ToInt32(ConfigurationManager.AppSettings["ExcelDateRowAdjustment"].ToString().Trim());
+
+                for (int dtRow = 2; dtRow < dt.Rows.Count; dtRow++)
+                {
+                    for (int col = 1; col <= 22; col++)
+                    {
+                        //Debug.Assert(!(row == 4 && col == 7), "checked!!");
+                        var cellValue = Convert.ToString((_sheet.Cells[dtRow, col] as Excel.Range).Value);
+                        dt.Rows[dtRow - rowSetting][col - 1] = cellValue;
+
+                        //if (cellValue.Trim().Length > 0) { data += "   " + cellValue; }
+                    }
+                }
+
+                //MessageBox.Show(data);
+                wb.Close();
+                excelApp.Quit();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            finally { excelApp = null; wb = null; _sheet = null; GC.Collect(); }
+
+            return dt;
+        }
+
         /// <summary>
         /// Export button click event.
         /// </summary>
@@ -163,24 +298,30 @@ namespace OTAutomation
         {
             try
             {
-                if (fileNames.ContainsValue(null))
+                bool processWeeklyFile = Convert.ToBoolean(ConfigurationManager.AppSettings["ProcessWeeklyFile"]);
+
+                if (!processWeeklyFile)
                 {
-                    MessageBox.Show("Please choose all the files corresponding to each week!");
-                    return;
-                }
-                else
-                {
-                    foreach (List<Employee> employeeCollection in EmployeeCollection.Values)
+                    if (fileNames.ContainsValue(null))
                     {
-                        foreach (Employee emp in employeeCollection)
-                        {
-                            ExporExcelFile.SetEmployeeOTHours(emp, WeeklyWorkingHours, 0);
-                            employees.Add(emp);
-                        }
+                        MessageBox.Show("Please choose all the files corresponding to each week!");
+                        return;
                     }
                 }
 
-                var employeesTotal = employees.GroupBy(m => m.Id).Select(m => new Employee { Id = m.Key, TotalHours = m.Sum(c => c.TotalHours) }).ToList();
+                employees = new List<Employee>();
+
+                foreach (ExcelData employeeCollection in EmployeeCollection.Values)
+                {
+                    foreach (Employee emp in employeeCollection.Employees)
+                    {
+                        ExporExcelFile.SetEmployeeOTHours(emp, WeeklyWorkingHours, 0);
+                        employees.Add(emp);
+                    }
+                }
+
+
+                var employeesTotal = employees.GroupBy(m => m.Id).Select(m => new Employee { Id = m.Key, Ot1 = m.Sum(c => c.Ot1), Ot2 = m.Sum(c => c.Ot2), Ot3 = m.Sum(c => c.Ot3), TotalHours = m.Sum(c => c.TotalHours) }).ToList();
 
                 ExporExcelFile.DisplayInExcel(employeesTotal, period);
             }
@@ -232,7 +373,8 @@ namespace OTAutomation
             cbYear.DataSource = years;
         }
 
-        private void GetWeekFirstAndLast(DateTime date, int  weekNumber, out int firstDay, out int lastDay)
+
+        private void GetWeekFirstAndLast(DateTime date, int weekNumber, out int firstDay, out int lastDay)
         {
             var firstDayOfMonth = (int)date.DayOfWeek;
 
