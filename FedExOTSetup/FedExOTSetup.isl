@@ -342,9 +342,10 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{EECE3379-C950-4663-8E30-1B1894812426}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OTAutomation.Content_Files</td><td>{11A984A2-386B-4DE1-92CF-E7FD9DFBE0DB}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.content_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Content_Files</td><td>{29D134D6-68FB-4DB8-8E9C-9C9F9DB09186}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.content_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Primary_output</td><td>{BD02D857-64AA-4923-AFF7-99D8AE479E54}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OTAutomation.Primary_output1</td><td>{F997A362-F32D-4190-BCCC-0AF424933E8D}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Primary_output1</td><td>{A1EE0707-5847-4FE4-859A-194D6F42848B}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Primary_output2</td><td>{6E262B73-289D-45D7-A77F-353D8D88EFCF}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1058,6 +1059,7 @@
 		<row><td>INSTALLDIR</td><td>OTAutomation.Content_Files</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output1</td></row>
+		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output2</td></row>
 	</table>
 
 	<table name="CustomAction">
@@ -1876,6 +1878,7 @@
 		<row><td>AlwaysInstall</td><td>OTAutomation.Content_Files</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output1</td></row>
+		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output2</td></row>
 	</table>
 
 	<table name="File">
@@ -1891,8 +1894,8 @@
 		<col def="I4">ISAttributes</col>
 		<col def="S72">ISComponentSubFolder_</col>
 		<row><td>otautomation.content_files</td><td>OTAutomation.Content_Files</td><td>OTAutomation.Content Files</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|ContentFiles</td><td>3</td><td/></row>
-		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output1</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
-		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td>0</td><td>1</td><td>D:\Project Repositories\Fedex Overtime Module\Code\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
+		<row><td>otautomation.primary_output</td><td>OTAutomation.Primary_output2</td><td>OTAutomation.Primary output</td><td>0</td><td/><td/><td/><td>1</td><td>&lt;OTAutomation&gt;|Built</td><td>3</td><td/></row>
+		<row><td>perfcentercpl.ico</td><td>ISX_DEFAULTCOMPONENT</td><td>PERFCE~1.ICO|PerfCenterCpl.ico</td><td>0</td><td/><td/><td/><td>1</td><td>C:\Users\Administrator\Source\Repos\OTModule\OTAutomation\Resources\PerfCenterCpl.ico</td><td>1</td><td/></row>
 	</table>
 
 	<table name="FileSFPCatalog">
@@ -2036,9 +2039,10 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_7E78527B_08F6_473D_9701_B61146C9C6F7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>OTAutomation.Content_Files</td><td/><td/><td>_23F43086_5ED3_41E4_9E61_09AD2380053F_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Content_Files</td><td/><td/><td>_264241B1_AC15_4443_BF67_7DB7F84BFBDC_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Primary_output</td><td/><td/><td>_AF9D6DF4_A5CE_426D_8008_1D8F6665A437_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_E809808E_34D6_400E_BDB1_60EFDAD93717_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_ACC4C646_1609_4ABE_A85C_8909B04702D3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Primary_output2</td><td/><td/><td>_0E26DE8B_7ECF_401B_8BA6_08E03B1853C0_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2627,7 +2631,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>2065981875</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1931772460</td></row>
@@ -3732,8 +3736,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1797536016</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>2065981875</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>2065981875</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>1931780395</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1797534128</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1797533968</td></row>
 	</table>
