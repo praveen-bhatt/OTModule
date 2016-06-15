@@ -92,7 +92,7 @@ namespace OTAutomation
                 Label lblWeek = new Label();
                 lblWeek.Name = "lblWeek" + (i + 1);
                 lblWeek.Text = firstDay.ToString() + "-" + lastDay.ToString();
-                lblWeek.Left = _PreviousButtonWidth + 30;
+                lblWeek.Left = _PreviousButtonWidth + 35;
                 pnlFileUploader.Controls.Add(btnWeek);
                 pnlWeekNumber.Controls.Add(lblWeek);
                 fileNames.Add(i, null);
@@ -234,20 +234,22 @@ namespace OTAutomation
 
         private void GetWeekFirstAndLast(DateTime date, int  weekNumber, out int firstDay, out int lastDay)
         {
-            var thursdayInCorrectWeek = date.AddDays((weekNumber - 1) * 7);
+            var firstDayOfMonth = (int)date.DayOfWeek;
 
-            var firstDate = thursdayInCorrectWeek;
-            var lastDate = thursdayInCorrectWeek.AddDays(7);
+            var weekLastDay = (7 * weekNumber) - firstDayOfMonth;
+            var weekFirstDay = weekLastDay - 6;
 
-            if (firstDate.Month < date.Year)
+            var lastDate = date.AddDays(weekLastDay);
+
+            if (weekFirstDay <= 0)
                 firstDay = 1;
             else
-                firstDay = firstDate.Day;
+                firstDay = weekFirstDay;
 
             if (lastDate.Month > date.Month)
                 lastDay = DateTime.DaysInMonth(date.Year, date.Month);
             else
-                lastDay = lastDate.Day;
+                lastDay = weekLastDay;
         }
     }
 }
