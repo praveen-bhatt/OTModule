@@ -42,7 +42,7 @@ namespace OTAutomation
 
                 // This example uses a single workSheet. 
                 workSheet = (Excel._Worksheet)excelApp.ActiveSheet;
-
+                workSheet.Name = "OT Output";
                 // Establish column headings in cells A1 and B1.
                 workSheet.Cells[1, "A"] = "EmCode";
                 workSheet.Cells[1, "B"] = "Period";
