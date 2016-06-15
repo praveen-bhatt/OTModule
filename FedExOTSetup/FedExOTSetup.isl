@@ -342,9 +342,9 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{EECE3379-C950-4663-8E30-1B1894812426}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OTAutomation.Content_Files</td><td>{60C6C974-EBF9-46F5-9C9F-D26A8BCF8AFD}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.content_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Content_Files</td><td>{11A984A2-386B-4DE1-92CF-E7FD9DFBE0DB}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.content_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Primary_output</td><td>{BD02D857-64AA-4923-AFF7-99D8AE479E54}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>OTAutomation.Primary_output1</td><td>{A1EE0707-5847-4FE4-859A-194D6F42848B}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>OTAutomation.Primary_output1</td><td>{F997A362-F32D-4190-BCCC-0AF424933E8D}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -2036,9 +2036,9 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_7E78527B_08F6_473D_9701_B61146C9C6F7_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>OTAutomation.Content_Files</td><td/><td/><td>_155DE4D9_0825_4009_9112_CE0A00FC5DFF_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Content_Files</td><td/><td/><td>_23F43086_5ED3_41E4_9E61_09AD2380053F_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Primary_output</td><td/><td/><td>_AF9D6DF4_A5CE_426D_8008_1D8F6665A437_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_ACC4C646_1609_4ABE_A85C_8909B04702D3_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_E809808E_34D6_400E_BDB1_60EFDAD93717_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
