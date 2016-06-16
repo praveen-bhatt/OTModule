@@ -37,7 +37,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(509, 316);
+            this.btnCancel.Location = new System.Drawing.Point(375, 316);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 3;
@@ -46,7 +46,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(428, 316);
+            this.btnSave.Location = new System.Drawing.Point(294, 316);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(75, 23);
             this.btnSave.TabIndex = 2;
@@ -57,12 +57,10 @@
             // dgvConfigList
             // 
             this.dgvConfigList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dgvConfigList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvConfigList.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.dgvConfigList.Location = new System.Drawing.Point(12, 22);
+            this.dgvConfigList.Location = new System.Drawing.Point(32, 23);
             this.dgvConfigList.Name = "dgvConfigList";
-            this.dgvConfigList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dgvConfigList.Size = new System.Drawing.Size(645, 274);
+            this.dgvConfigList.Size = new System.Drawing.Size(416, 273);
             this.dgvConfigList.TabIndex = 4;
             // 
             // ConfigSettings
@@ -71,7 +69,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(669, 351);
+            this.ClientSize = new System.Drawing.Size(470, 351);
             this.ControlBox = false;
             this.Controls.Add(this.dgvConfigList);
             this.Controls.Add(this.btnCancel);

@@ -44,30 +44,46 @@ namespace OTAutomation
 
             foreach (string key in config.AppSettings.Settings.AllKeys)
             {
-                DataRow dr = dt.NewRow();
-                dr["ConfigKey"] = key;
-                dr["ConfigValue"] = Convert.ToString(config.AppSettings.Settings[key].Value);
-                dt.Rows.Add(dr);
+                switch (key)
+                {
+                    case "WeeklyWorkingHours":
+                    case "ReadFromExcel":
+                    case "ProcessWeeklyFile":
+                    case "AutoScreenAdjustment":
+                    case "ScreenHeightAdjustment":
+                    case "ScreenWidthAdjustment":
+                        DataRow dr = dt.NewRow();
+                        dr["ConfigKey"] = key;
+                        dr["ConfigValue"] = Convert.ToString(config.AppSettings.Settings[key].Value);
+                        dt.Rows.Add(dr);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             dgvConfigList.DataSource = dt;
-            dgvConfigList.AutoGenerateColumns = true;
+            dgvConfigList.Columns["ConfigKey"].ReadOnly = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-
-            if (dt.Rows.Count > 0)
+            if (MessageBox.Show("Are you sure to save the values.","Save Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                foreach (DataRow item in dt.Rows)
+                Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+                if (dt.Rows.Count > 0)
                 {
-                    string key = Convert.ToString(item[0]);
-                    configuration.AppSettings.Settings[key].Value = Convert.ToString(item[1]);
+                    foreach (DataRow item in dt.Rows)
+                    {
+                        string key = Convert.ToString(item[0]);
+                        configuration.AppSettings.Settings[key].Value = Convert.ToString(item[1]);
+                    }
                 }
+
+                configuration.Save();
             }
 
-            configuration.Save();
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
