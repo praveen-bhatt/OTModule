@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -29,6 +30,11 @@ namespace OTAutomation
             {
                 grdOvertimeData.DataSource = ModelData;
                 grdOvertimeData.AutoGenerateColumns = true;
+
+                if (Convert.ToBoolean(ConfigurationManager.AppSettings["AutoScreenAdjustment"])){
+                    this.Width = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenHeightAdjustment"])) / 100;
+                    this.Height = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenWidthAdjustment"])) / 100;
+                }
             }
         }
 
