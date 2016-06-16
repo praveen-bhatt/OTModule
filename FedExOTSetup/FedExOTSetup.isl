@@ -342,6 +342,7 @@
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{EECE3379-C950-4663-8E30-1B1894812426}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td>{0E0FE203-7FBE-42C2-B1D3-EDC186ECCE10}</td><td>CommonFilesFolder</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Content_Files</td><td>{29D134D6-68FB-4DB8-8E9C-9C9F9DB09186}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.content_files</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Primary_output</td><td>{BD02D857-64AA-4923-AFF7-99D8AE479E54}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>OTAutomation.Primary_output1</td><td>{A1EE0707-5847-4FE4-859A-194D6F42848B}</td><td>INSTALLDIR</td><td>2</td><td/><td>otautomation.primary_output</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
@@ -1055,7 +1056,9 @@
 	<table name="CreateFolder">
 		<col key="yes" def="s72">Directory_</col>
 		<col key="yes" def="s72">Component_</col>
+		<row><td>CommonFilesFolder</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>INSTALLDIR</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Content_Files</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output</td></row>
 		<row><td>INSTALLDIR</td><td>OTAutomation.Primary_output1</td></row>
@@ -1875,6 +1878,7 @@
 		<col key="yes" def="s38">Feature_</col>
 		<col key="yes" def="s72">Component_</col>
 		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT</td></row>
+		<row><td>AlwaysInstall</td><td>ISX_DEFAULTCOMPONENT1</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Content_Files</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output</td></row>
 		<row><td>AlwaysInstall</td><td>OTAutomation.Primary_output1</td></row>
@@ -1911,6 +1915,7 @@
 	<table name="ISAssistantTag">
 		<col key="yes" def="s72">Tag</col>
 		<col def="S255">Data</col>
+		<row><td>PROJECT_ASSISTANT_DEFAULT_FEATURE</td><td>AlwaysInstall</td></row>
 		<row><td>_Built</td><td/></row>
 	</table>
 
@@ -2039,6 +2044,7 @@
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_7E78527B_08F6_473D_9701_B61146C9C6F7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ISX_DEFAULTCOMPONENT1</td><td/><td/><td>_530EE6FE_5C07_4D1A_946D_3E455EE0F713_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Content_Files</td><td/><td/><td>_264241B1_AC15_4443_BF67_7DB7F84BFBDC_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Primary_output</td><td/><td/><td>_AF9D6DF4_A5CE_426D_8008_1D8F6665A437_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>OTAutomation.Primary_output1</td><td/><td/><td>_ACC4C646_1609_4ABE_A85C_8909B04702D3_FILTER</td><td/><td/><td/><td/></row>
@@ -2631,7 +2637,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>-2094737206</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION35</td><td>1033</td><td>Microsoft .NET Framework 3.5 needs to be installed for this installation to continue.</td><td>0</td><td/><td>1931772460</td></row>
@@ -3447,6 +3453,7 @@
 		<row><td>IDS_SETUPEXE_EXPIRE_MSG</td><td>1033</td><td>This setup works until %s. The setup will now exit.</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS_SETUPEXE_LAUNCH_COND_E</td><td>1033</td><td>This setup was built with an evaluation version of InstallShield and can only be launched from setup.exe.</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME1</td><td>1033</td><td>FedExOT</td><td>0</td><td/><td>1797566290</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch AccessDatabaseEngine.exe</td><td>0</td><td/><td>-2094769172</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>1797533968</td></row>
@@ -3736,8 +3743,8 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>1797533968</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>1797536016</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>1931780395</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>1931780395</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.FedEx.com</td><td>0</td><td/><td>-2094737206</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>FedEx</td><td>0</td><td/><td>-2094737206</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Launch |Built</td><td>0</td><td/><td>1797534128</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>1797533968</td></row>
 	</table>
@@ -3853,6 +3860,7 @@
 		<col def="S255">ISBuildSourcePath</col>
 		<col def="I2">ISIconIndex</col>
 		<row><td>ARPPRODUCTICON.exe</td><td/><td>&lt;ISProductFolder&gt;\redist\Language Independent\OS Independent\setupicon.ico</td><td>0</td></row>
+		<row><td>AccessDatabaseEngi_E3DC28A47B5143A5BD43ED9E6B2691A0.exe</td><td/><td>D:\Downloads\AccessDatabaseEngine.exe</td><td>0</td></row>
 		<row><td>_Built1_9D09E189B6B14DC8B83953320CAB2916.exe</td><td/><td>&lt;VSSolutionFolder&gt;\OTAutomation\Resources\PerfCenterCpl.ico</td><td>0</td></row>
 		<row><td>_Built_45F7CCF1F9C646E2840AFBA2F89BA2CE.exe</td><td/><td>&lt;VSSolutionFolder&gt;\OTAutomation\Resources\PerfCenterCpl.ico</td><td>0</td></row>
 		<row><td>_Built_832B0952846A40EFAC2CC055AE8764F7.exe</td><td/><td>&lt;SystemFolder&gt;\Shell32.dll</td><td>305</td></row>
@@ -3988,7 +3996,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>ISTheme</td><td>InstallShield Blue.theme</td></row>
 		<row><td>ISUSLock</td><td>{48304E97-3245-464A-ABB5-6E9E59F68127}</td></row>
 		<row><td>ISUSSignature</td><td>{235652BC-1B75-45EA-9665-A139F064B29F}</td></row>
-		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore,viewProject,viewRelease,viewTextMessages</td></row>
+		<row><td>ISVisitedViews</td><td>viewAssistant,viewObjects,viewShortcuts,viewAppFiles,viewFileExtensions,viewUI,viewEnvironmentVariables,viewISToday,viewSystemSearch,viewLearnMore,viewProject,viewRelease,viewTextMessages,viewRegistry,viewIniFiles</td></row>
 		<row><td>Limited</td><td>1</td></row>
 		<row><td>LockPermissionMode</td><td>1</td></row>
 		<row><td>MsiExecCmdLineOptions</td><td/></row>

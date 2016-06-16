@@ -56,7 +56,7 @@ namespace OTAutomation
         /// Define total working hours of employee in month. 
         /// </summary>
         public double TotalHours { get; set; }
-
+        
         /// <summary>
         /// Define total leave of employee.
         /// </summary>

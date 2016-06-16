@@ -23,7 +23,7 @@ namespace OTAutomation
         /// <param name="employees">employees a collection of employee.</param>
         public static void DisplayInExcel(List<Employee> employees, DateTime period)
         {
-            
+
             Excel.Application excelApp = null;
             Excel._Worksheet workSheet = null;
             //Excel.Workbook workbook = null;
@@ -97,6 +97,10 @@ namespace OTAutomation
             double OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
             double OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
             double leftOverTimeHours = 0;
+
+            employee.TotalHours = employee.WeekFirstDayHours + employee.WeekSecondDayHours + employee.WeekThirdDayHours + employee.WeekFourthDayHours
+                                    + employee.WeekFifthDayHours + employee.WeekSixthDayHours + employee.WeekSeventhDayHours;
+
             employee.TotalOverTimeHours = employee.TotalHours - weeklyWorkingHours;
 
             if (employee.TotalOverTimeHours > 0)

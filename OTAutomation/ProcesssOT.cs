@@ -320,7 +320,6 @@ namespace OTAutomation
                     }
                 }
 
-
                 var employeesTotal = employees.GroupBy(m => m.Id).Select(m => new Employee { Id = m.Key, Ot1 = m.Sum(c => c.Ot1), Ot2 = m.Sum(c => c.Ot2), Ot3 = m.Sum(c => c.Ot3), TotalHours = m.Sum(c => c.TotalHours) }).ToList();
 
                 ExporExcelFile.DisplayInExcel(employeesTotal, period);
@@ -392,6 +391,26 @@ namespace OTAutomation
                 lastDay = DateTime.DaysInMonth(date.Year, date.Month);
             else
                 lastDay = weekLastDay;
+        }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            ConfigSettings configSettings = new ConfigSettings();
+
+            if (configSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            { 
+
+            }
+        }
+
+        static void ShowConfig()
+        {
+            // For read access you do not need to call OpenExeConfiguraton
+            foreach (string key in ConfigurationManager.AppSettings)
+            {
+                string value = ConfigurationManager.AppSettings[key];
+                Console.WriteLine("Key: {0}, Value: {1}", key, value);
+            }
         }
     }
 }

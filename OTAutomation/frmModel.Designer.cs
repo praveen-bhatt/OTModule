@@ -66,6 +66,7 @@
             this.grdOvertimeData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdOvertimeData.Location = new System.Drawing.Point(12, 41);
             this.grdOvertimeData.Name = "grdOvertimeData";
+            this.grdOvertimeData.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.grdOvertimeData.Size = new System.Drawing.Size(984, 509);
             this.grdOvertimeData.TabIndex = 2;
             // 
