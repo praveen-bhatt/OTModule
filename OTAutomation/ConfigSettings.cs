@@ -12,6 +12,9 @@ namespace OTAutomation
 {
     public partial class ConfigSettings : Form
     {
+        DataTable dt = null;
+        ExeConfigurationFileMap configFileMap = null;
+
         public ConfigSettings()
         {
             InitializeComponent();
@@ -31,38 +34,41 @@ namespace OTAutomation
         {
             string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
             string configFile = System.IO.Path.Combine(appPath, "OTAutomation.exe.config");
-            ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap();
+            configFileMap = new ExeConfigurationFileMap();
             configFileMap.ExeConfigFilename = configFile;
             System.Configuration.Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-            gbConfig.Controls.Clear();
-            int keyNum = 1;
+
+            dt = new DataTable();
+            dt.Columns.Add("ConfigKey");
+            dt.Columns.Add("ConfigValue");
 
             foreach (string key in config.AppSettings.Settings.AllKeys)
             {
-                Label lblConfig = new Label();
-                lblConfig.Name = "lblConfig" + keyNum.ToString();
-                lblConfig.Text = key;
-                lblConfig.Left = 130;
-                pnlConfig.Controls.Add(lblConfig);
-
-                TextBox txtConfig = new TextBox();
-                txtConfig.Name = "txtConfig" + keyNum.ToString();
-                txtConfig.Text = Convert.ToString(config.AppSettings.Settings[key].Value);
-                pnlConfig.Controls.Add(txtConfig);
-
-                keyNum++;
+                DataRow dr = dt.NewRow();
+                dr["ConfigKey"] = key;
+                dr["ConfigValue"] = Convert.ToString(config.AppSettings.Settings[key].Value);
+                dt.Rows.Add(dr);
             }
-            //config.AppSettings.Settings["YourThing"].Value = "New Value";
-            //config.Save(); 
+
+            dgvConfigList.DataSource = dt;
+            dgvConfigList.AutoGenerateColumns = true;
         }
 
-        private static void UpdateSetting(string key, string value)
+        private void btnSave_Click(object sender, EventArgs e)
         {
-            Configuration configuration = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            configuration.AppSettings.Settings[key].Value = value;
-            configuration.Save();
+            Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
 
-            ConfigurationManager.RefreshSection("appSettings");
+            if (dt.Rows.Count > 0)
+            {
+                foreach (DataRow item in dt.Rows)
+                {
+                    string key = Convert.ToString(item[0]);
+                    configuration.AppSettings.Settings[key].Value = Convert.ToString(item[1]);
+                }
+            }
+
+            configuration.Save();
+            this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
     }
 }

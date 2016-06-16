@@ -398,8 +398,8 @@ namespace OTAutomation
             ConfigSettings configSettings = new ConfigSettings();
 
             if (configSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            { 
-
+            {
+                configSettings.Close();
             }
         }
 
