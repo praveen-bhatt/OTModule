@@ -52,7 +52,7 @@ namespace OTAutomation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                txtErrorMessage.Text = Convert.ToString(ex);
             }
            
         }
@@ -125,6 +125,7 @@ namespace OTAutomation
             }
             catch (Exception ex)
             {
+                txtErrorMessage.Text = Convert.ToString(ex);
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -182,7 +183,8 @@ namespace OTAutomation
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    txtErrorMessage.Text = Convert.ToString(ex);
+                    //MessageBox.Show(ex.ToString());
                 }
             }
 
@@ -240,7 +242,7 @@ namespace OTAutomation
                 wb.Close();
                 excelApp.Quit();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch { throw; } //MessageBox.Show(ex.ToString()); }
             finally { excelApp = null; wb = null; _sheet = null; GC.Collect(); }
 
             return dt;
@@ -297,7 +299,7 @@ namespace OTAutomation
                 wb.Close();
                 excelApp.Quit();
             }
-            catch (Exception ex) { MessageBox.Show(ex.ToString()); }
+            catch { throw; }
             finally { excelApp = null; wb = null; _sheet = null; GC.Collect(); }
 
             return dt;
@@ -340,11 +342,13 @@ namespace OTAutomation
             }
             catch (System.Runtime.InteropServices.COMException comex)
             {
-                MessageBox.Show(comex.ToString());
+                txtErrorMessage.Text = Convert.ToString(comex);
+                //MessageBox.Show(comex.ToString());
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                txtErrorMessage.Text = Convert.ToString(ex);
+                //MessageBox.Show(ex.ToString());
             }
 
         }
@@ -420,7 +424,8 @@ namespace OTAutomation
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                txtErrorMessage.Text = Convert.ToString(ex);
+                //MessageBox.Show(ex.ToString());
             }
 
         }

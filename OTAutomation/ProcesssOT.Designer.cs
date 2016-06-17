@@ -42,10 +42,13 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlWeekNumber = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtErrorMessage = new System.Windows.Forms.TextBox();
+            this.gbErrorMessage = new System.Windows.Forms.GroupBox();
             this.btnSettings = new System.Windows.Forms.Button();
             this.pnlHeader.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.gbErrorMessage.SuspendLayout();
             this.SuspendLayout();
             // 
             // cbMonth
@@ -159,7 +162,7 @@
             this.groupBox1.Controls.Add(this.btnExport);
             this.groupBox1.Location = new System.Drawing.Point(13, 199);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(602, 137);
+            this.groupBox1.Size = new System.Drawing.Size(602, 138);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Export";
@@ -181,6 +184,24 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
+            // txtErrorMessage
+            // 
+            this.txtErrorMessage.Location = new System.Drawing.Point(10, 15);
+            this.txtErrorMessage.Multiline = true;
+            this.txtErrorMessage.Name = "txtErrorMessage";
+            this.txtErrorMessage.Size = new System.Drawing.Size(586, 55);
+            this.txtErrorMessage.TabIndex = 11;
+            // 
+            // gbErrorMessage
+            // 
+            this.gbErrorMessage.Controls.Add(this.txtErrorMessage);
+            this.gbErrorMessage.Location = new System.Drawing.Point(13, 343);
+            this.gbErrorMessage.Name = "gbErrorMessage";
+            this.gbErrorMessage.Size = new System.Drawing.Size(602, 74);
+            this.gbErrorMessage.TabIndex = 12;
+            this.gbErrorMessage.TabStop = false;
+            this.gbErrorMessage.Text = "Error Message";
+            // 
             // btnSettings
             // 
             this.btnSettings.Location = new System.Drawing.Point(534, 9);
@@ -195,7 +216,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 345);
+            this.ClientSize = new System.Drawing.Size(627, 429);
+            this.Controls.Add(this.gbErrorMessage);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.pnlWeekNumber);
             this.Controls.Add(this.groupBox1);
@@ -211,6 +233,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.gbErrorMessage.ResumeLayout(false);
+            this.gbErrorMessage.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -231,6 +255,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel pnlWeekNumber;
+        private System.Windows.Forms.TextBox txtErrorMessage;
+        private System.Windows.Forms.GroupBox gbErrorMessage;
         private System.Windows.Forms.Button btnSettings;
 
     }
