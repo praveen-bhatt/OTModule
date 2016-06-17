@@ -32,59 +32,77 @@ namespace OTAutomation
 
         private void ConfigSettings_Load(object sender, EventArgs e)
         {
-            string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            string configFile = System.IO.Path.Combine(appPath, "OTAutomation.exe.config");
-            configFileMap = new ExeConfigurationFileMap();
-            configFileMap.ExeConfigFilename = configFile;
-            System.Configuration.Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-
-            dt = new DataTable();
-            dt.Columns.Add("ConfigKey");
-            dt.Columns.Add("ConfigValue");
-
-            foreach (string key in config.AppSettings.Settings.AllKeys)
+            try
             {
-                switch (key)
-                {
-                    case "WeeklyWorkingHours":
-                    case "ReadFromExcel":
-                    case "ProcessWeeklyFile":
-                    case "AutoScreenAdjustment":
-                    case "ScreenHeightAdjustment":
-                    case "ScreenWidthAdjustment":
-                        DataRow dr = dt.NewRow();
-                        dr["ConfigKey"] = key;
-                        dr["ConfigValue"] = Convert.ToString(config.AppSettings.Settings[key].Value);
-                        dt.Rows.Add(dr);
-                        break;
-                    default:
-                        break;
-                }
-            }
+                string appPath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string configFile = System.IO.Path.Combine(appPath, "OTAutomation.exe.config");
+                configFileMap = new ExeConfigurationFileMap();
+                configFileMap.ExeConfigFilename = configFile;
+                System.Configuration.Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
 
-            dgvConfigList.DataSource = dt;
-            dgvConfigList.Columns["ConfigKey"].ReadOnly = true;
+                dt = new DataTable();
+                dt.Columns.Add("ConfigKey");
+                dt.Columns.Add("ConfigValue");
+
+                foreach (string key in config.AppSettings.Settings.AllKeys)
+                {
+                    switch (key)
+                    {
+                        case "WeeklyWorkingHours":
+                        case "ReadFromExcel":
+                        case "ProcessWeeklyFile":
+                        case "AutoScreenAdjustment":
+                        case "ScreenHeightAdjustment":
+                        case "ScreenWidthAdjustment":
+                            DataRow dr = dt.NewRow();
+                            dr["ConfigKey"] = key;
+                            dr["ConfigValue"] = Convert.ToString(config.AppSettings.Settings[key].Value);
+                            dt.Rows.Add(dr);
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                dgvConfigList.DataSource = dt;
+                dgvConfigList.Columns["ConfigKey"].ReadOnly = true;
+            }
+            catch
+            {
+               throw;
+            }
+           
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure to save the values.","Save Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            try
             {
-                Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
-
-                if (dt.Rows.Count > 0)
+                if (MessageBox.Show("Are you sure to save the values.", "Save Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    foreach (DataRow item in dt.Rows)
+                    Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+
+                    if (dt.Rows.Count > 0)
                     {
-                        string key = Convert.ToString(item[0]);
-                        configuration.AppSettings.Settings[key].Value = Convert.ToString(item[1]);
+                        foreach (DataRow item in dt.Rows)
+                        {
+                            string key = Convert.ToString(item[0]);
+                            configuration.AppSettings.Settings[key].Value = Convert.ToString(item[1]);
+                        }
                     }
+
+                    //configuration.Save();
+                    configuration.Save(ConfigurationSaveMode.Modified);
+
+                    ConfigurationManager.RefreshSection("appSettings");
                 }
 
-                configuration.Save();
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
             }
-
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            catch
+            {
+                throw;
+            }
         }
     }
 }

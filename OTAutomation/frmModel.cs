@@ -26,16 +26,25 @@ namespace OTAutomation
 
         private void frmModel_Load(object sender, EventArgs e)
         {
-            if (ModelData != null)
+            try
             {
-                grdOvertimeData.DataSource = ModelData;
-                grdOvertimeData.AutoGenerateColumns = true;
+                if (ModelData != null)
+                {
+                    grdOvertimeData.DataSource = ModelData;
+                    grdOvertimeData.AutoGenerateColumns = true;
 
-                if (Convert.ToBoolean(ConfigurationManager.AppSettings["AutoScreenAdjustment"])){
-                    this.Width = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenHeightAdjustment"])) / 100;
-                    this.Height = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenWidthAdjustment"])) / 100;
+                    if (Convert.ToBoolean(ConfigurationManager.AppSettings["AutoScreenAdjustment"]))
+                    {
+                        this.Width = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenHeightAdjustment"])) / 100;
+                        this.Height = (Screen.PrimaryScreen.WorkingArea.Size.Width * Convert.ToInt32(ConfigurationManager.AppSettings["ScreenWidthAdjustment"])) / 100;
+                    }
                 }
             }
+            catch 
+            {
+                throw;
+            }
+           
         }
 
         private void btnOk_Click(object sender, EventArgs e)

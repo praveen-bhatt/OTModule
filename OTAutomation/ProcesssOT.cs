@@ -45,9 +45,16 @@ namespace OTAutomation
         /// <param name="e">e as EventArgs</param>
         private void ProcesssOT_Load(object sender, EventArgs e)
         {
-            //log.Info("Exception occured.");
-            BindMonthNames();
-            BindYearNames();
+            try
+            {
+                BindMonthNames();
+                BindYearNames();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+           
         }
 
         /// <summary>
@@ -57,61 +64,68 @@ namespace OTAutomation
         /// <param name="e">e as EventArgs</param>
         private void btnImport_Click(object sender, EventArgs e)
         {
-            pnlFileUploader.Controls.Clear();
-            pnlWeekNumber.Controls.Clear();
-            lblFileList.Text = string.Empty;
-
-            if (fileNames != null) { fileNames = null; }
-
-            int _Months = Convert.ToInt32(cbMonth.SelectedValue);
-            int _Year = Convert.ToInt32(cbYear.SelectedValue);
-
-            //extract the month
-            int daysInMonth = DateTime.DaysInMonth(_Year, _Months);
-            DateTime firstOfMonth = new DateTime(_Year, _Months, 1);
-            period = firstOfMonth;
-            //days of week starts by default as Sunday = 0
-            int firstDayOfMonth = (int)firstOfMonth.DayOfWeek;
-            int weeksInMonth = (int)Math.Ceiling((firstDayOfMonth + daysInMonth) / 7.0);
-            int _PreviousButtonWidth = 0;
-            int firstDay = 0;
-            int lastDay = 0;
-            int weekNumber = 0;
-            fileNames = new Hashtable();
-            weekDateRange = new Dictionary<int, ReportDateRange>();
-
-            for (int i = 0; i < weeksInMonth; i++)
+            try
             {
-                Button btnWeek = new Button();
-                btnWeek.Tag = i;
-                btnWeek.Name = "btnWeek" + (i + 1);
-                btnWeek.Text = "Week" + (i + 1);
-                //btnWeek.Anchor = AnchorStyles.None;
-                btnWeek.Left = _PreviousButtonWidth + 20;
+                pnlFileUploader.Controls.Clear();
+                pnlWeekNumber.Controls.Clear();
+                lblFileList.Text = string.Empty;
 
-                btnWeek.Click += btn_Click;
-                weekNumber = i + 1;
-                GetWeekFirstAndLast(firstOfMonth, weekNumber, out firstDay, out lastDay);
+                if (fileNames != null) { fileNames = null; }
 
-                //Add week date range like 1 - 7 etc.
-                ReportDateRange dateRange = new ReportDateRange();
-                dateRange.WeekStartDate = firstDay;
-                dateRange.WeekEndDate = lastDay;
-                weekDateRange.Add(i, dateRange);
+                int _Months = Convert.ToInt32(cbMonth.SelectedValue);
+                int _Year = Convert.ToInt32(cbYear.SelectedValue);
 
-                Label lblWeek = new Label();
-                lblWeek.Name = "lblWeek" + (i + 1);
-                lblWeek.Text = "Days: " + firstDay.ToString() + "-" + lastDay.ToString();
-                lblWeek.Width = 72;
-                lblWeek.Left = _PreviousButtonWidth + 28;
-                pnlFileUploader.Controls.Add(btnWeek);
-                pnlWeekNumber.Controls.Add(lblWeek);
-                fileNames.Add(i, null);
+                //extract the month
+                int daysInMonth = DateTime.DaysInMonth(_Year, _Months);
+                DateTime firstOfMonth = new DateTime(_Year, _Months, 1);
+                period = firstOfMonth;
+                //days of week starts by default as Sunday = 0
+                int firstDayOfMonth = (int)firstOfMonth.DayOfWeek;
+                int weeksInMonth = (int)Math.Ceiling((firstDayOfMonth + daysInMonth) / 7.0);
+                int _PreviousButtonWidth = 0;
+                int firstDay = 0;
+                int lastDay = 0;
+                int weekNumber = 0;
+                fileNames = new Hashtable();
+                weekDateRange = new Dictionary<int, ReportDateRange>();
 
-                if (pnlFileUploader.Controls.Count > 0)
+                for (int i = 0; i < weeksInMonth; i++)
                 {
-                    _PreviousButtonWidth = pnlFileUploader.Controls[i].Left + pnlFileUploader.Controls[i].Width;
+                    Button btnWeek = new Button();
+                    btnWeek.Tag = i;
+                    btnWeek.Name = "btnWeek" + (i + 1);
+                    btnWeek.Text = "Week" + (i + 1);
+                    //btnWeek.Anchor = AnchorStyles.None;
+                    btnWeek.Left = _PreviousButtonWidth + 20;
+
+                    btnWeek.Click += btn_Click;
+                    weekNumber = i + 1;
+                    GetWeekFirstAndLast(firstOfMonth, weekNumber, out firstDay, out lastDay);
+
+                    //Add week date range like 1 - 7 etc.
+                    ReportDateRange dateRange = new ReportDateRange();
+                    dateRange.WeekStartDate = firstDay;
+                    dateRange.WeekEndDate = lastDay;
+                    weekDateRange.Add(i, dateRange);
+
+                    Label lblWeek = new Label();
+                    lblWeek.Name = "lblWeek" + (i + 1);
+                    lblWeek.Text = "Days: " + firstDay.ToString() + "-" + lastDay.ToString();
+                    lblWeek.Width = 72;
+                    lblWeek.Left = _PreviousButtonWidth + 28;
+                    pnlFileUploader.Controls.Add(btnWeek);
+                    pnlWeekNumber.Controls.Add(lblWeek);
+                    fileNames.Add(i, null);
+
+                    if (pnlFileUploader.Controls.Count > 0)
+                    {
+                        _PreviousButtonWidth = pnlFileUploader.Controls[i].Left + pnlFileUploader.Controls[i].Width;
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
             }
         }
 
@@ -166,9 +180,9 @@ namespace OTAutomation
                     }
                     _model.Close();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    throw;
+                    MessageBox.Show(ex.ToString());
                 }
             }
 
@@ -395,22 +409,20 @@ namespace OTAutomation
 
         private void btnSettings_Click(object sender, EventArgs e)
         {
-            ConfigSettings configSettings = new ConfigSettings();
-
-            if (configSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            try
             {
-                configSettings.Close();
-            }
-        }
+                ConfigSettings configSettings = new ConfigSettings();
 
-        static void ShowConfig()
-        {
-            // For read access you do not need to call OpenExeConfiguraton
-            foreach (string key in ConfigurationManager.AppSettings)
-            {
-                string value = ConfigurationManager.AppSettings[key];
-                Console.WriteLine("Key: {0}, Value: {1}", key, value);
+                if (configSettings.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    configSettings.Close();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
         }
     }
 }

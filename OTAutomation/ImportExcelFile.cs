@@ -12,14 +12,9 @@ namespace OTAutomation
 {
     public class ImportExcelFile
     {
-        private double OT10Hrs = 0;
-        private double OT12Hrs = 0;
-
         public ImportExcelFile()
         {
-            OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
 
-            OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
         }
 
         public static DataTable FillExcelData(string destinationPath, DataTable _dtTemp)
@@ -105,44 +100,51 @@ namespace OTAutomation
             excelData.Employees = new List<Employee>();
             Employee _Employee = null;
 
-            if (dt.Rows.Count > 0)
+            try
             {
-                excelData.Mgr = Convert.ToString(dt.Rows[0][0]);
-                excelData.ReportDate = Convert.ToString(dt.Rows[1][0]);
-                excelData.WeekFirstDay = Convert.ToDateTime(dt.Rows[4][7]);
-                excelData.WeekSecondDay = Convert.ToDateTime(dt.Rows[4][9]);
-                excelData.WeekThirdDay = Convert.ToDateTime(dt.Rows[4][11]);
-                excelData.WeekForthDay = Convert.ToDateTime(dt.Rows[4][13]);
-                excelData.WeekFifthDay = Convert.ToDateTime(dt.Rows[4][15]);
-                excelData.WeekSixthDay = Convert.ToDateTime(dt.Rows[4][17]);
-                excelData.WeekSeventhDay = Convert.ToDateTime(dt.Rows[4][19]);
-
-                foreach (DataRow row in dt.Rows)
+                if (dt.Rows.Count > 0)
                 {
-                    if (dt.Rows.IndexOf(row) > 5)
+                    excelData.Mgr = Convert.ToString(dt.Rows[0][0]);
+                    excelData.ReportDate = Convert.ToString(dt.Rows[1][0]);
+                    excelData.WeekFirstDay = Convert.ToDateTime(dt.Rows[4][7]);
+                    excelData.WeekSecondDay = Convert.ToDateTime(dt.Rows[4][9]);
+                    excelData.WeekThirdDay = Convert.ToDateTime(dt.Rows[4][11]);
+                    excelData.WeekForthDay = Convert.ToDateTime(dt.Rows[4][13]);
+                    excelData.WeekFifthDay = Convert.ToDateTime(dt.Rows[4][15]);
+                    excelData.WeekSixthDay = Convert.ToDateTime(dt.Rows[4][17]);
+                    excelData.WeekSeventhDay = Convert.ToDateTime(dt.Rows[4][19]);
+
+                    foreach (DataRow row in dt.Rows)
                     {
-                        _Employee = new Employee();
-
-                        if (!row.IsNull(0))
+                        if (dt.Rows.IndexOf(row) > 5)
                         {
-                            _Employee.Id = Convert.ToString(row[0]);
-                        }
-                        else
-                        {
-                            break;
-                        }
+                            _Employee = new Employee();
 
-                        _Employee.WeekFirstDayHours = Convert.ToDouble(row[7]);
-                        _Employee.WeekSecondDayHours = Convert.ToDouble(row[9]);
-                        _Employee.WeekThirdDayHours = Convert.ToDouble(row[11]);
-                        _Employee.WeekFourthDayHours = Convert.ToDouble(row[13]);
-                        _Employee.WeekFifthDayHours = Convert.ToDouble(row[15]);
-                        _Employee.WeekSixthDayHours = Convert.ToDouble(row[17]);
-                        _Employee.WeekSeventhDayHours = Convert.ToDouble(row[19]);
-                        _Employee.TotalHours = Convert.ToDouble(row[20]);
-                        excelData.Employees.Add(_Employee);
+                            if (!row.IsNull(0))
+                            {
+                                _Employee.Id = Convert.ToString(row[0]);
+                            }
+                            else
+                            {
+                                break;
+                            }
+
+                            _Employee.WeekFirstDayHours = Convert.ToDouble(row[7]);
+                            _Employee.WeekSecondDayHours = Convert.ToDouble(row[9]);
+                            _Employee.WeekThirdDayHours = Convert.ToDouble(row[11]);
+                            _Employee.WeekFourthDayHours = Convert.ToDouble(row[13]);
+                            _Employee.WeekFifthDayHours = Convert.ToDouble(row[15]);
+                            _Employee.WeekSixthDayHours = Convert.ToDouble(row[17]);
+                            _Employee.WeekSeventhDayHours = Convert.ToDouble(row[19]);
+                            _Employee.TotalHours = Convert.ToDouble(row[20]);
+                            excelData.Employees.Add(_Employee);
+                        }
                     }
                 }
+            }
+            catch
+            {
+                throw;
             }
 
             return excelData;

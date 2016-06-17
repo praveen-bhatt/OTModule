@@ -91,36 +91,40 @@ namespace OTAutomation
             }
         }
 
-        public static Employee SetEmployeeOTHours(Employee employee, double weeklyWorkingHours, double totalLeaves)
+        public static void SetEmployeeOTHours(Employee employee, double weeklyWorkingHours, double totalLeaves)
         {
-            Employee emp = new Employee();
-            double OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
-            double OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
-            double leftOverTimeHours = 0;
-
-            employee.TotalHours = employee.WeekFirstDayHours + employee.WeekSecondDayHours + employee.WeekThirdDayHours + employee.WeekFourthDayHours
-                                    + employee.WeekFifthDayHours + employee.WeekSixthDayHours + employee.WeekSeventhDayHours;
-
-            employee.TotalOverTimeHours = employee.TotalHours - weeklyWorkingHours;
-
-            if (employee.TotalOverTimeHours > 0)
+            try
             {
-                employee.Ot2 = (employee.TotalOverTimeHours > OT10Hrs) ? OT10Hrs : employee.TotalOverTimeHours;
-                leftOverTimeHours = employee.TotalOverTimeHours - employee.Ot2;
+                double OT10Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["10HrsOT"]);
+                double OT12Hrs = Convert.ToDouble(ConfigurationManager.AppSettings["12HrsOT"]);
+                double leftOverTimeHours = 0;
 
-                if (leftOverTimeHours > 0)
-                {
-                    employee.Ot3 = (employee.TotalOverTimeHours - OT10Hrs > OT12Hrs) ? OT12Hrs : employee.TotalOverTimeHours - OT10Hrs;
-                    leftOverTimeHours = employee.Ot3;
-                }
+                employee.TotalHours = employee.WeekFirstDayHours + employee.WeekSecondDayHours + employee.WeekThirdDayHours + employee.WeekFourthDayHours
+                                        + employee.WeekFifthDayHours + employee.WeekSixthDayHours + employee.WeekSeventhDayHours;
 
-                if (leftOverTimeHours > 0)
+                employee.TotalOverTimeHours = employee.TotalHours - weeklyWorkingHours;
+
+                if (employee.TotalOverTimeHours > 0)
                 {
-                    employee.Ot1 = (employee.TotalOverTimeHours - OT10Hrs - OT12Hrs > 0) ? employee.TotalOverTimeHours - OT10Hrs - OT12Hrs : 0;
+                    employee.Ot2 = (employee.TotalOverTimeHours > OT10Hrs) ? OT10Hrs : employee.TotalOverTimeHours;
+                    leftOverTimeHours = employee.TotalOverTimeHours - employee.Ot2;
+
+                    if (leftOverTimeHours > 0)
+                    {
+                        employee.Ot3 = (employee.TotalOverTimeHours - OT10Hrs > OT12Hrs) ? OT12Hrs : employee.TotalOverTimeHours - OT10Hrs;
+                        leftOverTimeHours = employee.Ot3;
+                    }
+
+                    if (leftOverTimeHours > 0)
+                    {
+                        employee.Ot1 = (employee.TotalOverTimeHours - OT10Hrs - OT12Hrs > 0) ? employee.TotalOverTimeHours - OT10Hrs - OT12Hrs : 0;
+                    }
                 }
             }
-
-            return employee;
+            catch
+            {
+                throw;
+            }
         }
 
     }
